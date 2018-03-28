@@ -13,7 +13,9 @@ extern "C" {
  * Signature: (Z)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgBoolean
-  (JNIEnv *, jobject, jboolean);
+  (JNIEnv *env, jobject obj, jboolean bArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -21,7 +23,9 @@ JNIEXPORT jboolean JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgBoolean
  * Signature: (B)B
  */
 JNIEXPORT jbyte JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgByte
-  (JNIEnv *, jobject, jbyte);
+  (JNIEnv *env, jobject obj, jbyte bArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -29,7 +33,9 @@ JNIEXPORT jbyte JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgByte
  * Signature: (C)C
  */
 JNIEXPORT jchar JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgChar
-  (JNIEnv *, jobject, jchar);
+  (JNIEnv *env, jobject obj, jchar cArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -37,7 +43,9 @@ JNIEXPORT jchar JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgChar
  * Signature: (S)S
  */
 JNIEXPORT jshort JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgShort
-  (JNIEnv *, jobject, jshort);
+  (JNIEnv *env, jobject obj, jshort sArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -45,7 +53,9 @@ JNIEXPORT jshort JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgShort
  * Signature: (I)I
  */
 JNIEXPORT jint JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgInt
-  (JNIEnv *, jobject, jint);
+  (JNIEnv *env, jobject obj, jint iArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -53,7 +63,9 @@ JNIEXPORT jint JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgInt
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgLong
-  (JNIEnv *, jobject, jlong);
+  (JNIEnv *env, jobject obj, jlong lArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -61,7 +73,9 @@ JNIEXPORT jlong JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgLong
  * Signature: (F)D
  */
 JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
-  (JNIEnv *, jobject, jfloat);
+  (JNIEnv *env, jobject obj, jfloat fArg) {
+
+}
 
 /*
  * Class:     com_alan_alanjni_JNIWrapper
@@ -69,7 +83,9 @@ JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
  * Signature: (D)D
  */
 JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgDouble
-  (JNIEnv *, jobject, jdouble);
+  (JNIEnv *env, jobject obj, jdouble dArg) {
+
+}
 
 #ifdef __cplusplus
 }
