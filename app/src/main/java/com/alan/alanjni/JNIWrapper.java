@@ -84,7 +84,7 @@ public class JNIWrapper {
      * @param fArg
      * @return
      */
-    public double setArgFloat(float fArg) {
+    public float setArgFloat(float fArg) {
         return nativeSetArgFloat(fArg);
     }
 
@@ -153,7 +153,7 @@ public class JNIWrapper {
      * @param fArg
      * @return
      */
-    private native double nativeSetArgFloat(float fArg);
+    private native float nativeSetArgFloat(float fArg);
 
     /**
      * 向底层传递 float 型参数，并返回 float 型返回值
