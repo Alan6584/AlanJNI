@@ -13,6 +13,10 @@ public class JNIWrapper {
     private static final int SUCCESS_CODE = 0;
 
 
+    // Used to load the 'alanjni' library on application startup.
+    static {
+        System.loadLibrary("alanjni");
+    }
 
 
     /******************************************************************
@@ -66,7 +70,7 @@ public class JNIWrapper {
         }
         int errCode = nativeSetArgInt(iArg);
         if (SUCCESS_CODE != errCode) {
-            throw new RuntimeException("Error during setArgInt.");
+            throw new RuntimeException("Error during setArgInt.");//一般这里可以是自定义异常
         }
     }
 
