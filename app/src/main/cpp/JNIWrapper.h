@@ -58,9 +58,9 @@ JNIEXPORT jlong JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgLong
 /*
  * Class:     com_alan_alanjni_JNIWrapper
  * Method:    nativeSetArgFloat
- * Signature: (F)D
+ * Signature: (F)F
  */
-JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
+JNIEXPORT jfloat JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
   (JNIEnv *, jobject, jfloat);
 
 /*

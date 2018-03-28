@@ -7,6 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 /*
  * Class:     com_alan_alanjni_JNIWrapper
  * Method:    nativeSetArgBoolean
@@ -14,7 +15,8 @@ extern "C" {
  */
 JNIEXPORT jboolean JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgBoolean
   (JNIEnv *env, jobject obj, jboolean bArg) {
-
+    jboolean ret = !bArg; // 对传入的参数 bArg 取反
+    return ret;
 }
 
 /*
@@ -24,7 +26,8 @@ JNIEXPORT jboolean JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgBoolean
  */
 JNIEXPORT jbyte JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgByte
   (JNIEnv *env, jobject obj, jbyte bArg) {
-
+    jbyte ret = bArg < 2; // 对传入的 bArg 左移两位（即乘 2 ）
+    return ret;
 }
 
 /*
@@ -34,7 +37,8 @@ JNIEXPORT jbyte JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgByte
  */
 JNIEXPORT jchar JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgChar
   (JNIEnv *env, jobject obj, jchar cArg) {
-
+    jchar ret = cArg + 1; // 对传入的 cArg 加 1，即其下一个字符
+    return ret;
 }
 
 /*
@@ -44,7 +48,8 @@ JNIEXPORT jchar JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgChar
  */
 JNIEXPORT jshort JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgShort
   (JNIEnv *env, jobject obj, jshort sArg) {
-
+    jshort ret = sArg + 2; // 对传入的参数 sArg 加 2
+    return ret;
 }
 
 /*
@@ -54,7 +59,13 @@ JNIEXPORT jshort JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgShort
  */
 JNIEXPORT jint JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgInt
   (JNIEnv *env, jobject obj, jint iArg) {
-
+    jint ret;
+    if (iArg < 10) {// 如果传入的参数 iArg 小于 10，则返回成功，否则返回失败
+        ret = 0;
+    } else {
+        ret = -1;
+    }
+    return ret;
 }
 
 /*
@@ -64,7 +75,8 @@ JNIEXPORT jint JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgInt
  */
 JNIEXPORT jlong JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgLong
   (JNIEnv *env, jobject obj, jlong lArg) {
-
+    jlong ret = lArg + 1 * 1000 * 1000; // 对传入的 lArg 做运算
+    return ret;
 }
 
 /*
@@ -72,9 +84,10 @@ JNIEXPORT jlong JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgLong
  * Method:    nativeSetArgFloat
  * Signature: (F)D
  */
-JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
+JNIEXPORT jfloat JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
   (JNIEnv *env, jobject obj, jfloat fArg) {
-
+    jfloat ret = fArg + 1.0f; // 对传入的 fArg 做运算
+    return ret;
 }
 
 /*
@@ -84,7 +97,8 @@ JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
  */
 JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgDouble
   (JNIEnv *env, jobject obj, jdouble dArg) {
-
+    jdouble ret = dArg + 2.0; // 对传入的 fArg 做运算
+    return ret;
 }
 
 #ifdef __cplusplus
