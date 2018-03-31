@@ -1,7 +1,7 @@
 package com.alan.alanjni;
 
 /**
- * Author: wangjianjun.
+ * Author: AlanWang.
  * Date: 18/3/26 15:18.
  * Mail: alanwang6584@gmail.com
  */
