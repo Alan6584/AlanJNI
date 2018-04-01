@@ -71,6 +71,14 @@ JNIEXPORT jfloat JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFloat
 JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgDouble
   (JNIEnv *, jobject, jdouble);
 
+/*
+ * Class:     com_alan_alanjni_JNIWrapper
+ * Method:    nativeSetArgString
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgString
+        (JNIEnv *, jobject, jstring);
+
 #ifdef __cplusplus
 }
 #endif

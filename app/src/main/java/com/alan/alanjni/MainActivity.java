@@ -8,17 +8,32 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    private JNIWrapper jniWrapper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        jniTest();
+        jniWrapper = new JNIWrapper();
+
+//        jniTest01();
+        jniTest02();
 
     }
 
-    private void jniTest() {
-        JNIWrapper jniWrapper = new JNIWrapper();
+    /**
+     * 向底层传递对象类型数据
+     */
+    private void jniTest02() {
+        jniWrapper.setArgString("this is string arg from java!");
+    }
+
+
+    /**
+     * 测试向底层传递基本类型数据
+     */
+    private void jniTest01() {
 
         boolean bRet = jniWrapper.setArgBoolean(false);
         Log.e(TAG, "setArgBoolean()--->>>bRet = " + bRet);

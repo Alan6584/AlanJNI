@@ -104,3 +104,18 @@ JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgDouble
     LOGD(TAG_JNI, "nativeSetArgDouble()--->dArg = %lf, ret = %lf", dArg, ret);
     return ret;
 }
+
+/*
+ * Class:     com_alan_alanjni_JNIWrapper
+ * Method:    nativeSetArgString
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgString
+        (JNIEnv *env, jobject obj, jstring strArg) {
+    jboolean iscopy;
+    char *cStr = (char *) env->GetStringUTFChars(strArg, &iscopy);
+
+    LOGD(TAG_JNI, "nativeSetArgString()--->cStr = %s", cStr);
+
+    env->ReleaseStringUTFChars(strArg, cStr);
+}
