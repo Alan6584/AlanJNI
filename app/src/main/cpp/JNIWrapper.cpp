@@ -108,14 +108,24 @@ JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgDouble
 /*
  * Class:     com_alan_alanjni_JNIWrapper
  * Method:    nativeSetArgString
- * Signature: (Ljava/lang/String;)V
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
-JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgString
+JNIEXPORT jstring JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgString
         (JNIEnv *env, jobject obj, jstring strArg) {
-    jboolean iscopy;
-    char *cStr = (char *) env->GetStringUTFChars(strArg, &iscopy);
 
+    // 当 isCopy 为 JNI_TRU E时，表示返回源字符串的一个副本；
+    // 当其为 JNI_FALSE 表示直接返回源字符串的指针；
+    // 如果不关心返回的是一个实例还是一个指向源字符串的指针，可以为NULL;
+    jboolean iscopy;
+
+    // 这里不能直接使用 strArg，需要将其通过 GetStringUTFChars 接口将其转成 UTF-8 的 字符串的指针
+    char *cStr = (char *) env->GetStringUTFChars(strArg, &iscopy);
     LOGD(TAG_JNI, "nativeSetArgString()--->cStr = %s", cStr);
 
+    // 最后需要释放，否则可能导致内存泄漏
     env->ReleaseStringUTFChars(strArg, cStr);
+
+    // 向上层返回 string
+    char cChars[] = "The String is from native!";
+    return env->NewStringUTF(cChars);
 }

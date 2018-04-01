@@ -112,8 +112,8 @@ public class JNIWrapper {
      * 调用底层 nativeSetArgString 接口
      * @param strArg
      */
-    public void setArgString(String strArg) {
-        nativeSetArgString(strArg);
+    public String setArgString(String strArg) {
+        return nativeSetArgString(strArg);
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -188,5 +188,5 @@ public class JNIWrapper {
      * 向底层传递 String 类型参数
      * @param str
      */
-    private native void nativeSetArgString(String str);
+    private native String nativeSetArgString(String str);
 }

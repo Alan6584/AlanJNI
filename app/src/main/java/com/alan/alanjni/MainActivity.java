@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
      * 向底层传递对象类型数据
      */
     private void jniTest02() {
-        jniWrapper.setArgString("this is string arg from java!");
+        String strRet = jniWrapper.setArgString("this is string arg from java!");
+        Log.e(TAG, "setArgString()--->>>strRet = " + strRet);
     }
 
 
