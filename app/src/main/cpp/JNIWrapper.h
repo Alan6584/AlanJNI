@@ -79,6 +79,14 @@ JNIEXPORT jdouble JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgDouble
 JNIEXPORT jstring JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgString
         (JNIEnv *, jobject, jstring);
 
+/*
+ * Class:     com_alan_alanjni_JNIWrapper
+ * Method:    nativeSetArgFieldInfo
+ * Signature: (Lcom/alan/alanjni/beans/ArgFieldInfo;)V
+ */
+JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
+        (JNIEnv *, jobject, jobject);
+
 #ifdef __cplusplus
 }
 #endif

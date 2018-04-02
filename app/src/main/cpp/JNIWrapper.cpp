@@ -129,3 +129,27 @@ JNIEXPORT jstring JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgString
     char cChars[] = "The String is from native!";
     return env->NewStringUTF(cChars);
 }
+
+
+/*
+ * Class:     com_alan_alanjni_JNIWrapper
+ * Method:    nativeSetArgFieldInfo
+ * Signature: (Lcom/alan/alanjni/beans/ArgFieldInfo;)V
+ */
+JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
+        (JNIEnv *env, jobject obj, jobject jArgObj) {
+
+    jfieldID fieldID = NULL;
+    // 根据参数对象获取 class，下面可以从 class 中获取 FieldID 或 MethodID
+    jclass infoClass = env->GetObjectClass(jArgObj);
+
+    // 通过属性变量名（跟 java 中定义的变量名一致，如 booleanArg）和变量类型签名（boolean 的类型签名是 Z），获取 FieldID
+    fieldID = env->GetFieldID(infoClass, "booleanArg", "Z");
+    jboolean booleanArg = (jboolean) env->GetBooleanField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->booleanArg = %d", booleanArg);
+
+    // 获取 ArgFieldInfo 中定义的 intArg 变量的 FieldID，int 型的类型签名是 I
+    fieldID = env->GetFieldID(infoClass, "intArg", "I");
+    jint intArg = (jint) env->GetIntField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->intArg = %d", intArg);
+}

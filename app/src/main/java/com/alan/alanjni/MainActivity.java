@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.alan.alanjni.beans.ArgFieldInfo;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private void jniTest02() {
         String strRet = jniWrapper.setArgString("this is string arg from java!");
         Log.e(TAG, "setArgString()--->>>strRet = " + strRet);
+
+        ArgFieldInfo argFieldInfo = new ArgFieldInfo();
+        jniWrapper.setArgFieldInfo(argFieldInfo);
     }
 
 
