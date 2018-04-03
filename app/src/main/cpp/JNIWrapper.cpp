@@ -148,6 +148,21 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
     jboolean booleanArg = (jboolean) env->GetBooleanField(jArgObj, fieldID);
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->booleanArg = %d", booleanArg);
 
+    // 获取 ArgFieldInfo 中定义的 byteArg 变量的 FieldID，byte 型的类型签名是 B
+    fieldID = env->GetFieldID(infoClass, "byteArg", "B");
+    jbyte byteArg = (jbyte) env->GetByteField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->byteArg = %d", byteArg);
+
+    // 获取 ArgFieldInfo 中定义的 charArg 变量的 FieldID，char 型的类型签名是 C
+    fieldID = env->GetFieldID(infoClass, "charArg", "C");
+    jchar charArg = (jchar) env->GetCharField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->charArg = %c", charArg);
+
+    // 获取 ArgFieldInfo 中定义的 shortArg 变量的 FieldID，short 型的类型签名是 S
+    fieldID = env->GetFieldID(infoClass, "shortArg", "S");
+    jshort shortArg = (jshort) env->GetShortField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->shortArg = %d", shortArg);
+
     // 获取 ArgFieldInfo 中定义的 intArg 变量的 FieldID，int 型的类型签名是 I
     fieldID = env->GetFieldID(infoClass, "intArg", "I");
     jint intArg = (jint) env->GetIntField(jArgObj, fieldID);

@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG, "setArgString()--->>>strRet = " + strRet);
 
         ArgFieldInfo argFieldInfo = new ArgFieldInfo();
+        argFieldInfo.setByteArg((byte) 0x02);
         argFieldInfo.setBooleanArg(true);
+        argFieldInfo.setCharArg('a');
+        argFieldInfo.setShortArg((short) 6);
         argFieldInfo.setIntArg(2);
         argFieldInfo.setLongArg(32 * 1000 * 1000L);
         argFieldInfo.setFloatArg(1.2f);
