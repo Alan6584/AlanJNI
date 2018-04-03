@@ -152,4 +152,20 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
     fieldID = env->GetFieldID(infoClass, "intArg", "I");
     jint intArg = (jint) env->GetIntField(jArgObj, fieldID);
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->intArg = %d", intArg);
+
+    // 获取 ArgFieldInfo 中定义的 longArg 变量的 FieldID，long 型的类型签名是 J
+    fieldID = env->GetFieldID(infoClass, "longArg", "J");
+    jlong longArg = (jlong) env->GetLongField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->longArg = %ld", longArg);
+
+    // 获取 ArgFieldInfo 中定义的 floatArg 变量的 FieldID，float 型的类型签名是 F
+    fieldID = env->GetFieldID(infoClass, "floatArg", "F");
+    jfloat floatArg = (jfloat) env->GetFloatField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->floatArg = %f", floatArg);
+
+    // 获取 ArgFieldInfo 中定义的 intArg 变量的 FieldID，double 型的类型签名是 D
+    fieldID = env->GetFieldID(infoClass, "doubleArg", "D");
+    jint doubleArg = (jint) env->GetDoubleField(jArgObj, fieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->doubleArg = %f", doubleArg);
+
 }
