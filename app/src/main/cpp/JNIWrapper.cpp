@@ -183,4 +183,13 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
     jint doubleArg = (jint) env->GetDoubleField(jArgObj, fieldID);
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->doubleArg = %f", doubleArg);
 
+    // 获取 ArgFieldInfo 中定义的 strArg 变量的 FieldID，String 型的类型签名是 Ljava/lang/String;
+    fieldID = env->GetFieldID(infoClass, "strArg", "Ljava/lang/String;");
+    jstring strArg = (jstring) env->GetObjectField(jArgObj, fieldID);
+
+    char *cStr = (char *) env->GetStringUTFChars(strArg, NULL);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->cStr = %s", cStr);
+    // 最后需要释放，否则可能导致内存泄漏
+    env->ReleaseStringUTFChars(strArg, cStr);
+
 }

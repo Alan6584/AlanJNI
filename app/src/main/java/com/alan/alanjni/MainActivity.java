@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         argFieldInfo.setLongArg(32 * 1000 * 1000L);
         argFieldInfo.setFloatArg(1.2f);
         argFieldInfo.setDoubleArg(3.3);
+        argFieldInfo.setStrArg("string argument");
         Log.e(TAG, "java set--->>>argFieldInfo = " + argFieldInfo);
 
         jniWrapper.setArgFieldInfo(argFieldInfo);
