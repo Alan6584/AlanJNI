@@ -6,7 +6,7 @@ package com.alan.alanjni.beans;
  * Mail: alanwang6584@gmail.com
  */
 
-public class ArgFieldInfo {
+public class ArgInfo {
 
     /**
      * byte 型属性变量
@@ -141,7 +141,7 @@ public class ArgFieldInfo {
 
     @Override
     public String toString() {
-        return "ArgFieldInfo{" +
+        return "ArgInfo{" +
                 "byteArg=" + byteArg +
                 ", booleanArg=" + booleanArg +
                 ", charArg=" + charArg +

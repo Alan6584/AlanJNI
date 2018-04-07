@@ -3,9 +3,8 @@ package com.alan.alanjni;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
-import com.alan.alanjni.beans.ArgFieldInfo;
+import com.alan.alanjni.beans.ArgInfo;
 import com.alan.alanjni.beans.OtherInfo;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,22 +31,22 @@ public class MainActivity extends AppCompatActivity {
         String strRet = jniWrapper.setArgString("this is string arg from java!");
         Log.e(TAG, "setArgString()--->>>strRet = " + strRet);
 
-        ArgFieldInfo argFieldInfo = new ArgFieldInfo();
-        argFieldInfo.setByteArg((byte) 0x02);
-        argFieldInfo.setBooleanArg(true);
-        argFieldInfo.setCharArg('a');
-        argFieldInfo.setShortArg((short) 6);
-        argFieldInfo.setIntArg(2);
-        argFieldInfo.setLongArg(32 * 1000 * 1000L);
-        argFieldInfo.setFloatArg(1.2f);
-        argFieldInfo.setDoubleArg(3.3);
-        argFieldInfo.setStrArg("string argument");
+        ArgInfo argInfo = new ArgInfo();
+        argInfo.setByteArg((byte) 0x02);
+        argInfo.setBooleanArg(true);
+        argInfo.setCharArg('a');
+        argInfo.setShortArg((short) 6);
+        argInfo.setIntArg(2);
+        argInfo.setLongArg(32 * 1000 * 1000L);
+        argInfo.setFloatArg(1.2f);
+        argInfo.setDoubleArg(3.3);
+        argInfo.setStrArg("string argument");
 
         OtherInfo otherInfo = new OtherInfo(3);
-        argFieldInfo.setInfoArg(otherInfo);
-        Log.e(TAG, "java set--->>>argFieldInfo = " + argFieldInfo);
+        argInfo.setInfoArg(otherInfo);
+        Log.e(TAG, "java set--->>>argInfo = " + argInfo);
 
-        jniWrapper.setArgFieldInfo(argFieldInfo);
+        jniWrapper.setArgFieldInfo(argInfo);
     }
 
 

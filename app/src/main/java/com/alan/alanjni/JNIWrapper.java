@@ -1,6 +1,6 @@
 package com.alan.alanjni;
 
-import com.alan.alanjni.beans.ArgFieldInfo;
+import com.alan.alanjni.beans.ArgInfo;
 
 /**
  * Author: AlanWang.
@@ -120,10 +120,10 @@ public class JNIWrapper {
 
     /**
      * 调用底层 nativeSetArgFieldInfo 接口，底层通过 fieldId 来获取对象的属性数据
-     * @param argFieldInfo
+     * @param argInfo
      */
-    public void setArgFieldInfo(ArgFieldInfo argFieldInfo) {
-        nativeSetArgFieldInfo(argFieldInfo);
+    public void setArgFieldInfo(ArgInfo argInfo) {
+        nativeSetArgFieldInfo(argInfo);
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -202,7 +202,7 @@ public class JNIWrapper {
 
     /**
      * 向底层传递自定义对象
-     * @param argFieldInfo
+     * @param argInfo
      */
-    private native void nativeSetArgFieldInfo(ArgFieldInfo argFieldInfo);
+    private native void nativeSetArgFieldInfo(ArgInfo argInfo);
 }
