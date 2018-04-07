@@ -53,6 +53,11 @@ public class ArgFieldInfo {
      */
     private String strArg;
 
+    /**
+     * OtherInfo 自定义对象
+     */
+    private OtherInfo infoArg;
+
 
     public byte getByteArg() {
         return byteArg;
@@ -126,6 +131,14 @@ public class ArgFieldInfo {
         this.strArg = strArg;
     }
 
+    public OtherInfo getInfoArg() {
+        return infoArg;
+    }
+
+    public void setInfoArg(OtherInfo infoArg) {
+        this.infoArg = infoArg;
+    }
+
     @Override
     public String toString() {
         return "ArgFieldInfo{" +
@@ -138,6 +151,7 @@ public class ArgFieldInfo {
                 ", floatArg=" + floatArg +
                 ", doubleArg=" + doubleArg +
                 ", strArg=" + strArg +
+                ", infoArg=" + infoArg +
                 '}';
     }
 }

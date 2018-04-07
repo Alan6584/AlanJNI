@@ -180,10 +180,10 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
 
     // 获取 ArgFieldInfo 中定义的 intArg 变量的 FieldID，double 型的类型签名是 D
     fieldID = env->GetFieldID(infoClass, "doubleArg", "D");
-    jint doubleArg = (jint) env->GetDoubleField(jArgObj, fieldID);
+    jdouble doubleArg = (jdouble) env->GetDoubleField(jArgObj, fieldID);
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->doubleArg = %f", doubleArg);
 
-    // 获取 ArgFieldInfo 中定义的 strArg 变量的 FieldID，String 型的类型签名是 Ljava/lang/String;
+    // 获取 ArgFieldInfo 中定义的 strArg 变量的 FieldID，OtherInfo 型的类型签名是 Ljava/lang/String;
     fieldID = env->GetFieldID(infoClass, "strArg", "Ljava/lang/String;");
     jstring strArg = (jstring) env->GetObjectField(jArgObj, fieldID);
 
@@ -191,5 +191,20 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->cStr = %s", cStr);
     // 最后需要释放，否则可能导致内存泄漏
     env->ReleaseStringUTFChars(strArg, cStr);
+
+
+    // 以下是获取自定义对象中的自定义对象，即 ArgFieldInfo 类中声明的 OtherInfo 属性变量
+    // 获取 ArgFieldInfo 中定义的 infoArg 变量的 FieldID，
+    // 自定义对象的签名是 L<类的带包名全路径>;
+    // OtherInfo 型的类型签名是 Lcom/alan/alanjni/beans/OtherInfo; (记得末尾有分号)
+    fieldID = env->GetFieldID(infoClass, "infoArg", "Lcom/alan/alanjni/beans/OtherInfo;");
+    jobject infoArg = (jobject) env->GetObjectField(jArgObj, fieldID);
+
+    //获取子自定义对象的 class
+    jclass subArgClass = env->GetObjectClass(infoArg);
+    // 获取子自定义对象中的属性变量，可见 java 中的 OtherInfo 类
+    jfieldID subFieldID = env->GetFieldID(subArgClass, "intInfo", "I");
+    jint intInfo = env->GetIntField(infoArg, subFieldID);
+    LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->infoArg.intInfo = %d", intInfo);
 
 }

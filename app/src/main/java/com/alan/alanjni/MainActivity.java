@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.alan.alanjni.beans.ArgFieldInfo;
+import com.alan.alanjni.beans.OtherInfo;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         argFieldInfo.setFloatArg(1.2f);
         argFieldInfo.setDoubleArg(3.3);
         argFieldInfo.setStrArg("string argument");
+
+        OtherInfo otherInfo = new OtherInfo(3);
+        argFieldInfo.setInfoArg(otherInfo);
         Log.e(TAG, "java set--->>>argFieldInfo = " + argFieldInfo);
 
         jniWrapper.setArgFieldInfo(argFieldInfo);
