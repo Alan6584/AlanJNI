@@ -230,4 +230,39 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgMethodInfo
     methodID = env->GetMethodID(infoClass, "isBooleanArg", "()Z");
     jboolean booleanArg = (jboolean) env->CallBooleanMethod(jArgObj, methodID);
     LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->booleanArg = %d", booleanArg);
+
+    //获取 ArgInfo 中定义的 getByteArg 方法的 MethodID，该方法的的签名是 ()B
+    methodID = env->GetMethodID(infoClass, "getByteArg", "()B");
+    jbyte byteArg = (jbyte) env->CallByteMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->byteArg = %d", byteArg);
+
+    //获取 ArgInfo 中定义的 getCharArg 方法的 MethodID，该方法的的签名是 ()C
+    methodID = env->GetMethodID(infoClass, "getCharArg", "()C");
+    jchar charArg = (jchar) env->CallCharMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->charArg = %c", charArg);
+
+    //获取 ArgInfo 中定义的 getShortArg 方法的 MethodID，该方法的的签名是 ()S
+    methodID = env->GetMethodID(infoClass, "getShortArg", "()S");
+    jshort shortArg = (jshort) env->CallShortMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->shortArg = %d", shortArg);
+
+    //获取 ArgInfo 中定义的 getIntArg 方法的 MethodID，该方法的的签名是 ()I
+    methodID = env->GetMethodID(infoClass, "getIntArg", "()I");
+    jint intArg = (jint) env->CallIntMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->intArg = %d", intArg);
+
+    //获取 ArgInfo 中定义的 getLongArg 方法的 MethodID，该方法的的签名是 ()J
+    methodID = env->GetMethodID(infoClass, "getLongArg", "()J");
+    jlong longArg = (jlong) env->CallLongMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->longArg = %ld", longArg);
+
+    //获取 ArgInfo 中定义的 getFloatArg 方法的 MethodID，该方法的的签名是 ()F
+    methodID = env->GetMethodID(infoClass, "getFloatArg", "()F");
+    jfloat floatArg = (jfloat) env->CallFloatMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->floatArg = %f", floatArg);
+
+    //获取 ArgInfo 中定义的 getDoubleArg 方法的 MethodID，该方法的的签名是 ()D
+    methodID = env->GetMethodID(infoClass, "getDoubleArg", "()D");
+    jdouble doubleArg = (jdouble) env->CallDoubleMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->doubleArg = %f", doubleArg);
 }
