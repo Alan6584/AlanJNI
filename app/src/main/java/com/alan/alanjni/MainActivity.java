@@ -46,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
         argInfo.setInfoArg(otherInfo);
         Log.e(TAG, "java set--->>>argInfo = " + argInfo);
 
+        Log.e(TAG, "java setArgFieldInfo()------>>>");
         jniWrapper.setArgFieldInfo(argInfo);
+
+        Log.e(TAG, "java setArgMethodInfo()------>>>");
+        jniWrapper.setArgMethodInfo(argInfo);
     }
 
 

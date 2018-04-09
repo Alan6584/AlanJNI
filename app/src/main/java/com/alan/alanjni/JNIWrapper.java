@@ -126,6 +126,14 @@ public class JNIWrapper {
         nativeSetArgFieldInfo(argInfo);
     }
 
+    /**
+     * 调用底层 nativeSetArgMethodInfo 接口，底层通过 methodId 来获取对象的属性数据
+     * @param argInfo
+     */
+    public void setArgMethodInfo(ArgInfo argInfo) {
+        nativeSetArgMethodInfo(argInfo);
+    }
+
     //////////////////////////////////////////////////////////////////////
 
 
@@ -201,8 +209,14 @@ public class JNIWrapper {
     private native String nativeSetArgString(String str);
 
     /**
-     * 向底层传递自定义对象
+     * 向底层传递自定义对象，并通过 FieldId 来获取对象的属性变量的值
      * @param argInfo
      */
     private native void nativeSetArgFieldInfo(ArgInfo argInfo);
+
+    /**
+     * 向底层传递自定义对象，并通过 MethodId 来获取对象的属性变量的值
+     * @param argInfo
+     */
+    private native void nativeSetArgMethodInfo(ArgInfo argInfo);
 }

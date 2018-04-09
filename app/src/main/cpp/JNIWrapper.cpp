@@ -208,3 +208,26 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->infoArg.intInfo = %d", intInfo);
 
 }
+
+/*
+ * Class:     com_alan_alanjni_JNIWrapper
+ * Method:    nativeSetArgMethodInfo
+ * Signature: (Lcom/alan/alanjni/beans/ArgInfo;)V
+ */
+JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgMethodInfo
+        (JNIEnv *env, jobject obj, jobject jArgObj) {
+
+    jmethodID methodID = NULL;
+    // 根据参数对象获取 class，下面可以从 class 中获取 FieldID 或 MethodID
+    jclass infoClass = env->GetObjectClass(jArgObj);
+
+    // 通过方法名（跟 java 中定义的方法名一致，如 isBooleanArg）
+    // 和方法签名（ Java 层定义的方法是 isBooleanArg(), 没有参数，返回值是 boolean 类型，该方法的的签名是 ()Z ）,
+    // 方法签名：(参数列表)<返回值类型>，如
+    // int setParam(int a, float b) => (IF)I
+    // int setParam(int a, String str) => (ILjava/lang/String;)I
+    // 获取 MethodID
+    methodID = env->GetMethodID(infoClass, "isBooleanArg", "()Z");
+    jboolean booleanArg = (jboolean) env->CallBooleanMethod(jArgObj, methodID);
+    LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->booleanArg = %d", booleanArg);
+}
