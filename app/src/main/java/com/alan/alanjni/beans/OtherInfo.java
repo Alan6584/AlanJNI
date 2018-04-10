@@ -24,4 +24,11 @@ public class OtherInfo {
     public void setIntInfo(int intInfo) {
         this.intInfo = intInfo;
     }
+
+    @Override
+    public String toString() {
+        return "OtherInfo{" +
+                "intInfo=" + intInfo +
+                '}';
+    }
 }
