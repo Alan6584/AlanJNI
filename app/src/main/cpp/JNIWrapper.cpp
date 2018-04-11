@@ -207,6 +207,12 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgFieldInfo
     jint intInfo = env->GetIntField(infoArg, subFieldID);
     LOGD(TAG_JNI, "nativeSetArgFieldInfo()--->infoArg.intInfo = %d", intInfo);
 
+    // 释放内存
+    env->DeleteLocalRef(jArgObj);
+    env->DeleteLocalRef(infoClass);
+
+    env->DeleteLocalRef(infoArg);
+    env->DeleteLocalRef(subArgClass);
 }
 
 /*
@@ -275,17 +281,24 @@ JNIEXPORT void JNICALL Java_com_alan_alanjni_JNIWrapper_nativeSetArgMethodInfo
 
     //获取 ArgInfo 中定义的 getInfoArg 方法的 MethodID，该方法的的签名是 ()Lcom/alan/alanjni/beans/OtherInfo;
     methodID = env->GetMethodID(infoClass, "getInfoArg", "()Lcom/alan/alanjni/beans/OtherInfo;");
-    jobject infoObjArg = env->CallObjectMethod(jArgObj, methodID);
-    jclass jclsOtherInfo = env->GetObjectClass(infoObjArg);
+    jobject jotherInfoObj = env->CallObjectMethod(jArgObj, methodID);
+    jclass jclsOtherInfo = env->GetObjectClass(jotherInfoObj);
 
     jmethodID jOtherInfoMid = env->GetMethodID(jclsOtherInfo, "getIntInfo", "()I");
-    jint intInfo = env->CallIntMethod(infoObjArg, jOtherInfoMid);
+    jint intInfo = env->CallIntMethod(jotherInfoObj, jOtherInfoMid);
     LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->getInfoArg().getIntInfo = %d", intInfo);
 
     //获取 OtherInfo 中定义的 toString 方法的 MethodID，该方法的的签名是 ()Ljava/lang/String;
     jOtherInfoMid = env->GetMethodID(jclsOtherInfo, "toString", "()Ljava/lang/String;");
-    jstring jstrOtherInfo = (jstring) env->CallObjectMethod(infoObjArg, jOtherInfoMid);
+    jstring jstrOtherInfo = (jstring) env->CallObjectMethod(jotherInfoObj, jOtherInfoMid);
     char *cStrOtherInfo = (char *) env->GetStringUTFChars(jstrOtherInfo, NULL);
     LOGD(TAG_JNI, "nativeSetArgMethodInfo()--->getInfoArg().toString = %s", cStrOtherInfo);
     env->ReleaseStringUTFChars(jstrOtherInfo, cStrOtherInfo);
+
+    // 释放内存
+    env->DeleteLocalRef(jArgObj);
+    env->DeleteLocalRef(infoClass);
+
+    env->DeleteLocalRef(jotherInfoObj);
+    env->DeleteLocalRef(jclsOtherInfo);
 }
